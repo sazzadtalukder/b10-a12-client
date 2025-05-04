@@ -39,7 +39,8 @@ const AddNewTasks = () => {
                 payable_amount: data?.payable_amount,
                 completion_date : data?.completion_date ,
                 submission_info: data?.submission_info,
-                task_image_url: res.data?.data?.display_url
+                task_image_url: res.data?.data?.display_url,
+                email:user?.email
             }
             const totalPayableAmount = data.required_workers*data.payable_amount;
            if(totalPayableAmount>userInfo.coin){
@@ -69,6 +70,7 @@ const AddNewTasks = () => {
                 // console.log(totalPayableAmount)
                 const coinUpdateRes = await axiosSecure.patch(`/tasks?email=${user?.email}`,coinAmount);
                 console.log(coinUpdateRes.data.modifiedCount)
+                navigate('/dashboard/myTasks')
            }
             // const taskRes = await axiosSecure.post('/menu',menuItem)
             // console.log(taskRes.data)

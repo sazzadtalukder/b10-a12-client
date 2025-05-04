@@ -11,7 +11,7 @@ const Dashboard = () => {
     const axiosPublic = useAxiosPublic()
     const navigate = useNavigate()
     const axiosSecure = useAxiosSecure()
-    const { data: userInfo = {} } = useQuery({
+    const {refetch, data: userInfo = {} } = useQuery({
         queryKey: ['userInfo', user?.email],
         queryFn: async () => {
             const res = await axiosSecure.get(`/users?email=${user?.email}`)
@@ -19,6 +19,8 @@ const Dashboard = () => {
         }
 
     })
+    if(1)
+        refetch();
     console.log('dashboard ', userInfo)
     const isAdmin = true;
     const isWorker = true;
@@ -31,10 +33,10 @@ const Dashboard = () => {
                 </div>
                 <div className='flex flex-col items-center justify-center'>
                     <div className='flex items-center gap-2'>
-                        <p>Coin : {userInfo.coin} | </p>
+                        <p>Coin : {userInfo?.coin} | </p>
                         <span><img src={user?.photoURL} alt="" className='w-10 h-10 rounded-full' /></span></div>
                     <div className='flex items-center gap-2'>
-                        <p className='uppercase'>{userInfo.role} | </p>
+                        <p className='uppercase'>{userInfo?.role} | </p>
                         <span>{user?.displayName}</span>
                     </div>
                 </div>
@@ -48,7 +50,8 @@ const Dashboard = () => {
                 <div className='w-64 min-h-screen bg-orange-400 '>
                     {/* dashboard for admin */}
                 {
-                    userInfo.role == 'admin' && <>
+                    
+                    userInfo?.role == 'admin' && <>
                          <ul className='menu p-4 w-full'><li><NavLink to='/dashboard/adminHome'>Admin Home</NavLink></li>
                         <li>  <NavLink to='/dashboard/manageUsers'>Manage Users</NavLink></li>
                         <li> <NavLink to='/dashboard/manageTask'>Manage Task</NavLink></li></ul>
@@ -56,7 +59,7 @@ const Dashboard = () => {
                 }
                 {/* dashboard for worker  */}
                 {
-                    userInfo.role == 'worker' && <>
+                    userInfo?.role == 'worker' && <>
                        <ul className='menu p-4 w-full'>
                        <li><NavLink to='/dashboard/workerHome'>Worker Home</NavLink></li>
                         <li>  <NavLink to='/dashboard/taskList'>TaskList</NavLink></li>
@@ -68,7 +71,7 @@ const Dashboard = () => {
 
                 {/* dashboard for buyer  */}
                 {
-                    userInfo.role == 'buyer' && <>
+                    userInfo?.role == 'buyer' && <>
                         <ul className='menu p-4 w-full'>
                         <li> <NavLink to='/dashboard/buyerHome'>Buyer Home</NavLink></li>
                         <li><NavLink to='/dashboard/addNewTasks'>Add new Tasks</NavLink></li>
