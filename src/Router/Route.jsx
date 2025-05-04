@@ -7,6 +7,8 @@ import ErrorPage from "../Component/ErrorPage";
 import Home from "../Pages/Home/Home/Home";
 import Login from "../Pages/Login/Login";
 import Register from "../Pages/Register/Register";
+import Dashboard from "../Layout/Dashboard";
+import AddNewTasks from "../Pages/Dashboard/Buyer/AddNewTasks/AddNewTasks";
 export const router = createBrowserRouter([
     {
       path: "/",
@@ -27,4 +29,14 @@ export const router = createBrowserRouter([
         }
       ]
     },
+    {
+      path: '/dashboard',
+      element: <Dashboard></Dashboard>,
+      children: [
+        {
+          path: 'addNewTasks',
+          element: <AddNewTasks></AddNewTasks>
+        }
+      ]
+    }
   ]);

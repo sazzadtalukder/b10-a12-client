@@ -7,7 +7,7 @@ const Nav = () => {
     const links = <>
         <li><NavLink to='/'>Home</NavLink></li>
         {
-            user?.email && <><li><NavLink to='/'>Dashboard</NavLink></li><li><NavLink to='/'>Available Token</NavLink></li></>
+            user?.email && <><li><NavLink to='/dashboard'>Dashboard</NavLink></li><li><NavLink to='/'>Available Token</NavLink></li></>
         }
         <li><NavLink>Join as Developer</NavLink></li></>
         const handleLogout =()=>{
