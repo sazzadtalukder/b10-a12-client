@@ -58,7 +58,8 @@ const Register = () => {
             name: data.name,
             email: data.email,
             role: data.role,
-            coin: parseInt(coin)
+            coin: parseInt(coin),
+            photoURL: data.photoURL
         }
         createUser(data.email, data.password)
             .then(result => {

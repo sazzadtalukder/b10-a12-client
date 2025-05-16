@@ -6,7 +6,7 @@ import useAuth from './useAuth';
 const useInfo = () => {
     const axiosSecure = useAxiosSecure()
     const {user} = useAuth()
-    const { data: userInfo = {} } = useQuery({
+    const { refetch,data: userInfo = {} } = useQuery({
         queryKey: ['userInfo', user?.email],
         queryFn: async () => {
             const res = await axiosSecure.get(`/users?email=${user?.email}`)
@@ -15,7 +15,7 @@ const useInfo = () => {
 
     })
     
-    return userInfo
+    return [refetch,userInfo]
 };
 
 export default useInfo;

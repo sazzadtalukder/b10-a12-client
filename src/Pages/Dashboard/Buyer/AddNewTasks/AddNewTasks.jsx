@@ -35,12 +35,13 @@ const AddNewTasks = () => {
             const taskItem = {
                 task_title: data?.task_title,
                 task_detail: data?.task_detail,
-                required_workers: data?.required_workers,
-                payable_amount: data?.payable_amount,
+                required_workers: Number(data?.required_workers),
+                payable_amount: Number(data?.payable_amount),
                 completion_date : data?.completion_date ,
                 submission_info: data?.submission_info,
                 task_image_url: res.data?.data?.display_url,
-                email:user?.email
+                email:user?.email,
+                Buyer_name: user?.displayName
             }
             const totalPayableAmount = data.required_workers*data.payable_amount;
            if(totalPayableAmount>userInfo.coin){
