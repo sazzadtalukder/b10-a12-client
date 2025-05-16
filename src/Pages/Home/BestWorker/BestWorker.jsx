@@ -13,7 +13,7 @@ const BestWorker = () => {
     });
     
     const sortedWorker = [...totalWorker].sort((a,b)=> b.coin - a.coin).slice(0,6)
-    console.log(sortedWorker)
+    // console.log(sortedWorker)
     return (
         <div className='py-10'>
             <p className="text-2xl md:text-3xl font-bold text-center  py-5">Best Worker</p>

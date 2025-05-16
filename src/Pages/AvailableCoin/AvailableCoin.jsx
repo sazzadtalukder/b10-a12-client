@@ -13,7 +13,7 @@ const AvailableCoin = () => {
           return res.data.coin;
         },
       });
-    console.log(coin)
+    // console.log(coin)
     return (
         <div>
             Available Coin : {coin}

@@ -15,7 +15,7 @@ const ManageTasks = () => {
         }
 
     })
-    console.log(totalTask)
+    // console.log(totalTask)
     const handleDelete = (id) => {
 
         // console.log(res.data)

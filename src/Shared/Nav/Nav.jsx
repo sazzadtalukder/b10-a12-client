@@ -69,10 +69,10 @@ const Nav = () => {
   const handleLogout = () => {
     userLogout()
       .then(() => {
-        console.log('Logout Successfully');
+        // console.log('Logout Successfully');
       })
       .catch((err) => {
-        console.log('Logout error -->', err);
+        // console.log('Logout error -->', err);
       });
   };
 

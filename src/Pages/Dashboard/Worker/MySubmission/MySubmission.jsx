@@ -14,7 +14,7 @@ const MySubmission = () => {
         }
 
     })
-    console.log(submittedInfo)
+    // console.log(submittedInfo)
     return (
         <div>
             <div className="overflow-x-auto">

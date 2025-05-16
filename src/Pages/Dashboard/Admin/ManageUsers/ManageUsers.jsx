@@ -15,7 +15,7 @@ const ManageUsers = () => {
         }
 
     })
-    console.log(totalUser)
+    // console.log(totalUser)
     const handleDelete = (id) => {
 
         // console.log(res.data)
@@ -31,7 +31,7 @@ const ManageUsers = () => {
         }).then(async (result) => {
             if (result.isConfirmed) {
                 const resDelete = await axiosSecure.delete(`/totalUser/${id}`)
-                console.log(resDelete?.data)
+                // console.log(resDelete?.data)
                 if (resDelete.data.deletedCount) {
                     Swal.fire({
                         title: "Deleted!",
@@ -52,7 +52,7 @@ const ManageUsers = () => {
             role : e.target.value
         }
         const resStatusUpdate = await axiosSecure.patch(`/updateRole/${id}`,info)
-        console.log('status change  data-->', resStatusUpdate.data)
+        // console.log('status change  data-->', resStatusUpdate.data)
         if(resStatusUpdate.data?.modifiedCount){
             Swal.fire({
                 position: "top-end",

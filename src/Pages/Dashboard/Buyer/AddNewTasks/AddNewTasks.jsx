@@ -22,7 +22,7 @@ const AddNewTasks = () => {
     const axiosPublic = useAxiosPublic();
     const axiosSecure = useAxiosSecure()
     const onSubmit =async( data) => {
-        console.log(data);
+        // console.log(data);
         const imageFile = {image: data.task_image_url[0]}
         const res = await axiosPublic.post(image_hosting_api,imageFile,{
             headers: {
@@ -55,7 +55,7 @@ const AddNewTasks = () => {
            }
            else{
                 const taskRes = await axiosSecure.post('/tasks',taskItem);
-                console.log(taskRes.data)
+                // console.log(taskRes.data)
                 if(taskRes.data.insertedId){
                     Swal.fire({
                         position: "top-end",
@@ -70,7 +70,7 @@ const AddNewTasks = () => {
                 }
                 // console.log(totalPayableAmount)
                 const coinUpdateRes = await axiosSecure.patch(`/tasks?email=${user?.email}`,coinAmount);
-                console.log(coinUpdateRes.data.modifiedCount)
+                // console.log(coinUpdateRes.data.modifiedCount)
                 navigate('/dashboard/myTasks')
            }
             // const taskRes = await axiosSecure.post('/menu',menuItem)

@@ -130,7 +130,7 @@ const Dashboard = () => {
     setIsSidebarOpen(!isSidebarOpen);
   };
   const [isAdmin] = useAdmin()
-  console.log(isAdmin)
+  // console.log(isAdmin)
   return (
     <div className="min-h-screen bg-gray-100 flex flex-col">
       {/* Header */}

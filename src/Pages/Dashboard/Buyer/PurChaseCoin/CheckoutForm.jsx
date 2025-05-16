@@ -46,10 +46,10 @@ const CheckoutForm = ({value}) => {
         });
 
         if (error) {
-            console.log('[error]', error);
+            // console.log('[error]', error);
             setError(error.message)
         } else {
-            console.log('[PaymentMethod]', paymentMethod);
+            // console.log('[PaymentMethod]', paymentMethod);
             setError('')
         }
         //confirm payment
@@ -64,12 +64,12 @@ const CheckoutForm = ({value}) => {
             }
         })
         if(confirmError){
-            console.log('Confirm Error',confirmError)
+            // console.log('Confirm Error',confirmError)
         }
         else{
-            console.log('PaymentIntent',paymentIntent)
+            // console.log('PaymentIntent',paymentIntent)
             if(paymentIntent.status == "succeeded"){
-                console.log('transactionId',paymentIntent.id)
+                // console.log('transactionId',paymentIntent.id)
                 setTransactionId(paymentIntent.id)
                 const payment = {
                     email: user.email,
@@ -81,7 +81,7 @@ const CheckoutForm = ({value}) => {
                     // status: 'pending'
                 }
                 const res = await  axiosSecure.post(`/payments?email=${user.email}`,payment)
-                console.log('payment saved', res.data)
+                // console.log('payment saved', res.data)
                 refetch();
                 if(res.data?.paymentResult?.insertedId){
                     Swal.fire({

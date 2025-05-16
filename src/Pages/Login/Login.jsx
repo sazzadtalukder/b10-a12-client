@@ -12,7 +12,7 @@ const Login = () => {
     const handleGoogle = () => {
         userGoogleLogin()
             .then(result => {
-                console.log(result.user)
+                // console.log(result.user)
                 const userInfo = {
                     name: result.user.displayName,
                     email: result.user.email
@@ -20,7 +20,7 @@ const Login = () => {
                 axiosPublic.post('/users', userInfo)
                     .then(res => {
                         if (res.data.insertedId) {
-                            console.log('user added to the database', res.data);
+                            // console.log('user added to the database', res.data);
                             // Swal.fire({
                             //     position: "top-end",
                             //     icon: "success",
@@ -34,7 +34,7 @@ const Login = () => {
                 navigate(location?.state ? location.state : '/')
             })
             .catch(er => {
-                console.log(er)
+                // console.log(er)
                 Swal.fire({
                     icon: "error",
                     title: "Oops...",
@@ -49,7 +49,7 @@ const Login = () => {
         const password = form.password.value;
         userLogin(email, password)
             .then((result) => {
-                console.log(result.user)
+                // console.log(result.user)
                 Swal.fire({
                     position: "top-end",
                     icon: "success",

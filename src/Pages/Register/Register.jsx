@@ -13,7 +13,7 @@ const Register = () => {
     const handleGoogle = () => {
         userGoogleLogin()
             .then(result => {
-                console.log(result.user)
+                // console.log(result.user)
                 const userInfo = {
                     name: result.user.displayName,
                     email: result.user.email
@@ -21,7 +21,7 @@ const Register = () => {
                 axiosPublic.post('/users', userInfo)
                     .then(res => {
                         if (res.data.insertedId) {
-                            console.log('user added to the database', res.data);
+                            // console.log('user added to the database', res.data);
                             // Swal.fire({
                             //     position: "top-end",
                             //     icon: "success",
@@ -36,7 +36,7 @@ const Register = () => {
                 navigate(location?.state ? location.state : '/')
             })
             .catch(er => {
-                console.log(er)
+                // console.log(er)
                 Swal.fire({
                     icon: "error",
                     title: "Oops...",
@@ -53,7 +53,7 @@ const Register = () => {
     } = useForm()
     const onSubmit = (data) => {
         const coin = data.role === 'buyer' ? 50 :10;
-        console.log(coin)
+        // console.log(coin)
         const userInfo = {
             name: data.name,
             email: data.email,
@@ -63,14 +63,14 @@ const Register = () => {
         }
         createUser(data.email, data.password)
             .then(result => {
-                console.log(result.user)
+                // console.log(result.user)
                 updateUserProfile(data.name, data.photoURL)
                     .then(() => {
                         axiosPublic.post('/users', userInfo)
                             .then(res => {
                                 if (res.data.insertedId) {
                                     reset();
-                                    console.log('user added -->', res.data)
+                                    // console.log('user added -->', res.data)
                                     Swal.fire({
                                         position: "top-end",
                                         icon: "success",
@@ -85,7 +85,7 @@ const Register = () => {
                     })
             })
             .catch(err => {
-                console.log(err)
+                // console.log(err)
                 Swal.fire({
                     icon: "error",
                     title: "Oops...",

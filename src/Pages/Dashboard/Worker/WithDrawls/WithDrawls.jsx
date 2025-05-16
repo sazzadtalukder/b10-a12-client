@@ -10,12 +10,12 @@ const WithDrawls = () => {
     const [coin, setCoin] = useState(0)
     const [paymentSystem, setPaymentSystem] = useState("");
     const [accountNumber, setAccountNumber] = useState("");
-    console.log(userInfo)
+    // console.log(userInfo)
     
     const withDrawalAmount = userInfo?.coin / 20
     const withdrawAmount = (coin / 20).toFixed(2);
     const isCoinValid = coin > 0 && coin <= userInfo?.coin;
-    console.log(coin, paymentSystem,accountNumber,withdrawAmount);
+    // console.log(coin, paymentSystem,accountNumber,withdrawAmount);
     const axiosSecure = useAxiosSecure()
     const handleWithDraw = async(e)=>{
         e.preventDefault()
@@ -29,7 +29,7 @@ const WithDrawls = () => {
             status: 'pending'
         }
         const res = await axiosSecure.post('/withdrawRequest',withdrawInfo)
-        console.log(res.data)
+        // console.log(res.data)
         const updateInfo = {
             coin : coin,
         }

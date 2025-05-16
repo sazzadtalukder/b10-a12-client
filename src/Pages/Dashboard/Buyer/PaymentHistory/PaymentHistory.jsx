@@ -15,7 +15,7 @@ const PaymentHistory = () => {
 
     })
     
-   console.log(purchaseInfo)
+//    console.log(purchaseInfo)
     return (
         <div>
             <h2 className="text-2xl font-bold text-gray-800">Payment History</h2>
