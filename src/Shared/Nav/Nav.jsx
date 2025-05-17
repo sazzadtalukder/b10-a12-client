@@ -62,6 +62,9 @@
 import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import useAuth from '../../Hook/useAuth';
+import { useQuery } from '@tanstack/react-query';
+import useAxiosSecure from '../../Hook/useAxiosSecure';
+import useAdmin from '../../Hook/useAdmin';
 
 const Nav = () => {
   const { user, userLogout } = useAuth();
@@ -75,17 +78,28 @@ const Nav = () => {
         // console.log('Logout error -->', err);
       });
   };
-
+  const axiosSecure = useAxiosSecure()
+  
+   const { data: singleUser  } = useQuery({
+      queryKey: ['singleUser', user?.email],
+      queryFn: async () => {
+        const res = await axiosSecure.get(`/users?email=${user?.email}`)
+        console.log(res.data);
+        return res.data
+    },
+    });
+    console.log(singleUser)
   const links = (
     <>
       <li><NavLink to='/' className="font-semibold">Home</NavLink></li>
       {user?.email && (
         <>
           <li><NavLink to='/dashboard'>Dashboard</NavLink></li>
-          <li><NavLink to='/availableCoin'>Available Coin</NavLink></li>
+          {singleUser?.role == 'admin' ? '' : <li><NavLink to='/availableCoin'>Available Coin : {singleUser?.coin}</NavLink></li>}
+          
         </>
       )}
-      <li><NavLink to='/join-developer'>Join as Developer</NavLink></li>
+      <li><NavLink to='https://github.com/sazzadtalukder/b10-a12-client'>Join as Developer</NavLink></li>
     </>
   );
 

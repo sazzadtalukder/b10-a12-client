@@ -108,6 +108,7 @@ import useAxiosPublic from '../Hook/useAxiosPublic';
 import useInfo from '../Hook/useInfo';
 import { useQuery } from '@tanstack/react-query';
 import useAdmin from '../Hook/useAdmin';
+import Footer from '../Shared/Footer/Footer';
 
 
 const Dashboard = () => {
@@ -116,20 +117,20 @@ const Dashboard = () => {
   const [, userInfo] = useInfo();
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
-  const { refetch, data: coin } = useQuery({
-    queryKey: ['coin', user?.email],
+  const { refetch, data: single } = useQuery({
+    queryKey: ['single', user?.email],
     queryFn: async () => {
       const res = await axiosSecure.get(`/users?email=${user?.email}`);
-      return res.data.coin;
+      return res.data;
     },
   });
 
-  if (userInfo) refetch();
+  // if (userInfo) refetch();
 
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
   };
-  const [isAdmin] = useAdmin()
+
   // console.log(isAdmin)
   return (
     <div className="min-h-screen bg-gray-100 flex flex-col">
@@ -151,7 +152,7 @@ const Dashboard = () => {
         {/* User Info */}
         <div className="mt-4 lg:mt-0 flex flex-col sm:flex-row items-center gap-3 text-sm lg:text-base">
           <div className="flex items-center gap-2">
-          {!isAdmin && <p className="text-gray-600 font-medium">Available Coin: {coin}</p>}
+          {single?.role != 'admin' && <p className="text-gray-600 font-medium">Available Coin: {single?.coin}</p>}
             <img
               src={user?.photoURL}
               alt="avatar"
@@ -218,7 +219,9 @@ const Dashboard = () => {
         <main className="flex-1 overflow-y-auto p-4 sm:p-6 lg:p-8 bg-gray-50 z-0">
           <Outlet />
         </main>
+       
       </div>
+      <Footer></Footer>
     </div>
   );
 };
