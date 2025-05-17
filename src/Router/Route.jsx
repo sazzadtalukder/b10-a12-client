@@ -24,6 +24,7 @@ import ManageUsers from "../Pages/Dashboard/Admin/ManageUsers/ManageUsers";
 import ManageTasks from "../Pages/Dashboard/Admin/ManageTasks/ManageTasks";
 import PaymentHistory from "../Pages/Dashboard/Buyer/PaymentHistory/PaymentHistory";
 import AvailableCoin from "../Pages/AvailableCoin/AvailableCoin";
+import UpdateTask from "../Pages/Dashboard/Buyer/MyTasks/UpdateTask";
 export const router = createBrowserRouter([
     {
       path: "/",
@@ -63,6 +64,10 @@ export const router = createBrowserRouter([
         {
           path: 'myTasks',
           element: <PrivateRouter><MyTasks></MyTasks></PrivateRouter>
+        },
+        {
+            path: 'updateTask/:id',
+            element: <UpdateTask></UpdateTask>
         },
         {
           path: 'purchaseCoin/:value',

@@ -108,6 +108,7 @@ import useAxiosSecure from '../../../../Hook/useAxiosSecure';
 import useAxiosPublic from '../../../../Hook/useAxiosPublic';
 import Swal from 'sweetalert2';
 import useInfo from '../../../../Hook/useInfo';
+import { Link } from 'react-router-dom';
 
 const MyTasks = () => {
   const { user } = useAuth();
@@ -162,8 +163,10 @@ const MyTasks = () => {
       }
     });
   };
-const handleUpdate= (id)=>{
-  console.log(id)
+const handleUpdate= async (id)=>{
+  const res = await axiosSecure.get(`/tasks/${id}`);
+  const updatedTask = res.data
+  
 }
   return (
     <div className="p-4 md:p-6 lg:p-8 space-y-6">
@@ -190,7 +193,7 @@ const handleUpdate= (id)=>{
                   <td className="px-4 py-2">{task?.completion_date}</td>
                   <td className="px-4 py-2">${task?.payable_amount}</td>
                   <td className="px-4 py-2">
-                    <button className="btn btn-sm btn-info" onClick={()=>handleUpdate(task._id)}>Update</button>
+                    <Link to={`/dashboard/updateTask/${task?._id}`}><button className="btn btn-sm btn-info">Update</button></Link>
                   </td>
                   <td className="px-4 py-2">
                     <button
