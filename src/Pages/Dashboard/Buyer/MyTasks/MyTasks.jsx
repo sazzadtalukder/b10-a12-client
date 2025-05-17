@@ -162,7 +162,9 @@ const MyTasks = () => {
       }
     });
   };
-
+const handleUpdate= (id)=>{
+  console.log(id)
+}
   return (
     <div className="p-4 md:p-6 lg:p-8 space-y-6">
       <h2 className="text-2xl font-bold text-gray-800">My Tasks</h2>
@@ -188,7 +190,7 @@ const MyTasks = () => {
                   <td className="px-4 py-2">{task?.completion_date}</td>
                   <td className="px-4 py-2">${task?.payable_amount}</td>
                   <td className="px-4 py-2">
-                    <button className="btn btn-sm btn-info">Update</button>
+                    <button className="btn btn-sm btn-info" onClick={()=>handleUpdate(task._id)}>Update</button>
                   </td>
                   <td className="px-4 py-2">
                     <button
